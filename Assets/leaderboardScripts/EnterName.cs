@@ -24,7 +24,7 @@ public class EnterName : MonoBehaviour {
         Debug.Log("Your name: " + charName);
 
         //TODO: GRAB SCORE VALUE FROM AR WORLD SCENE
-        Highscores.AddNewHighscore(charName, 100);
+        Highscores.AddNewHighscore(charName, PlayerPrefs.GetInt("player_score"));
         MakeActive();
     }
 

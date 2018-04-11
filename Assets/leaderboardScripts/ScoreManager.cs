@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+
 public class ScoreManager : MonoBehaviour
 {
     // From the inspector, drag & Drop the GameObject holding the Text component used to display the score
     [SerializeField]
-    private Text scoreText;
 
-    private int score;
+    private static int score = 0;
+    public Text scoreText;
 
     //To add or subtract score, use
     // private ScoreManager scoreManager;
@@ -14,16 +17,20 @@ public class ScoreManager : MonoBehaviour
     //scoreManager.Score++;
     //scoreManager.Score--;
 
+    void Start()
+    {
+        scoreText.text = "Score: " + score;
+    }
+
 
     private void Update()
     {
-        PlayerPrefs.SetInt("Player Score", score);
-        score = score + 1;
+        PlayerPrefs.SetInt("player_score", score);
+        scoreText.text = "Score: " + score;
     }
 
     public void updateScoreView()
     {
-        scoreText.text = "Score: " + score.ToString();
         PlayerPrefs.SetInt("player_score", score);
     }
 
